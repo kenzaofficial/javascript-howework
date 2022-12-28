@@ -1,5 +1,4 @@
 'use strict';
-
 let money;
 let time;
 let appData;
@@ -94,28 +93,32 @@ function start() {
     },
   };
 }
-start();
 for (let key in appData) {
   console.log(`Наша программа включает в себя данные: ${key}`);
 }
 
-// 1) Написать проверку, что пользователь может:
+//  ----------------------------------------------ЗАДАНИЕ НОМЕР 6
+//  Используя только файл скрипта (html руками не трогать) выполнить такие действия:
+// ·        Восстановить порядок в меню, добавить пятый пункт
+// ·        Заменить картинку заднего фона на другую из папки img
+// ·        Поменять заголовок, добавить слово "подлинную" ( Получится - "Мы продаем только подлинную технику Apple")
+// ·        Удалить рекламу со страницы
+// ·        Спросить у пользователя отношение к технике apple и записать ответ в блок на странице с id "prompt"
+//  Проверить, чтобы все работало и не было ошибок в консоли
 
-// ·        Ввести в дополнительных доходах (chooseIncome) только строку
-
-// ·        Не может оставить строку пустой
-
-// ·        Не может отменить вопрос
-
-// 2) При помощи метода перебора массива(forEach) вывести на экран сообщение "Способы доп. заработка: " и полученные способы (внутри chooseIncome)
-
-// ·        Товары должны начинаться с 1, а не с 0. Выполняем этот пункт в chooseIncome.
-
-// 3) Используя цикл for in для объекта (appData) вывести в консоль сообщение "Наша программа включает в себя данные: " (вывести весь appData)
-
-// 4) Проверить, чтобы все работало и не было ошибок в консоли
-
-// 5) Добавить папку с уроком на свой GitHub
-// Вопросы к этому заданию
-
-// Как перебрать свойства объекта?
+const menuItem = document.querySelectorAll('.menu-item');
+const newItem = document.createElement('li');
+const menuList = document.querySelector('.menu');
+const body = document.body;
+const title = document.querySelector('#title');
+const adv = document.querySelector('.adv');
+const column = document.querySelectorAll('.column');
+const promptAnswer = document.querySelector('#prompt');
+menuList.insertBefore(menuItem[2], menuItem[1]);
+menuList.appendChild(newItem);
+newItem.textContent = 'Пятый пункт';
+newItem.classList.add('menu-item');
+body.style.background = 'url(../img/apple_true.jpg) center no-repeat';
+title.textContent = 'Мы продаем только подлинную технику Apple';
+column[1].removeChild(adv);
+promptAnswer.textContent = prompt('Как вы относитесь к технике Apple?');
