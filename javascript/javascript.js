@@ -106,19 +106,19 @@ for (let key in appData) {
 // ·        Спросить у пользователя отношение к технике apple и записать ответ в блок на странице с id "prompt"
 //  Проверить, чтобы все работало и не было ошибок в консоли
 
-const menuItem = document.querySelectorAll('.menu-item');
+const menuItems = document.querySelectorAll('.menu-item');
 const newItem = document.createElement('li');
 const menuList = document.querySelector('.menu');
 const body = document.body;
 const title = document.querySelector('#title');
 const adv = document.querySelector('.adv');
-const column = document.querySelectorAll('.column');
+const columns = document.querySelectorAll('.column');
 const promptAnswer = document.querySelector('#prompt');
-menuList.insertBefore(menuItem[2], menuItem[1]);
+menuList.insertBefore(menuItems[2], menuItems[1]);
 menuList.appendChild(newItem);
 newItem.textContent = 'Пятый пункт';
 newItem.classList.add('menu-item');
 body.style.background = 'url(../img/apple_true.jpg) center no-repeat';
 title.textContent = 'Мы продаем только подлинную технику Apple';
-column[1].removeChild(adv);
+columns[1].removeChild(adv);
 promptAnswer.textContent = prompt('Как вы относитесь к технике Apple?');
