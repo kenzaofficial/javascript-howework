@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.Tabs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>TABS</h1>
+    <div class="tabs-block-wrapper">
+        <div class="tabs">
+            <div class="tab-btn active" data-btn="1">lake</div>
+            <div class="tab-btn" data-btn="2">night city</div>
+            <div class="tab-btn" data-btn="3">BMW or Mercedes</div>
+        </div>
+        <div class="contents">
+            <div class="content active" data-content="1">
+                <img class="content__img" src="/img/img_1.jpg" alt="">
+            </div>
+            <div class="content" data-content="2">
+                <img class="content__img" src="/img/img_2.jpg" alt="">
+            </div>
+            <div class="content" data-content="3">
+                <div class="tabs-secondary" id="tabsSecondary">
+                    <div class="tab-btn active" data-btn-inner="1">BMW</div>
+                    <div class="tab-btn" data-btn-inner="2">Mercedes</div>
+                </div>
+                <div class="contents">
+                    <div class="content-secondary active" data-content-inner="1" id="contentSecondary">
+                        <img class="content__img" src="/img/bmw.jpg" alt="">
+                    </div>
+                    <div class="content-secondary" data-content-inner="2" id="contentSecondary">
+                        <img class="content__img" src="/img/mercedes.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
