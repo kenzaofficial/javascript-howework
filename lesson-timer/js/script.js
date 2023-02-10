@@ -45,31 +45,65 @@ window.addEventListener("DOMContentLoaded", function () {
       Date.parse(endtime) - Date.parse(new Date());
     let seconds = Math.floor((timeDifferenceMilliSeconds / 1000) % 60);
     let minutes = Math.floor((timeDifferenceMilliSeconds / 60000) % 60);
-    let hours = Math.floor(timeDifferenceMilliSeconds / 60000 / 60 % 24);
+    let hours = Math.floor((timeDifferenceMilliSeconds / 60000 / 60) % 24);
     let days = Math.floor(timeDifferenceMilliSeconds / 60000 / 60 / 24);
-    let timeUnitName = timer.querySelector('#unitName');
-    console.log(timeUnitName);
-    if(seconds < 10) {
-      seconds = '0' + seconds;
-    };
+    let secondsName = timer.querySelector("#secondsName");
+    let minutesName = timer.querySelector("#minutesName");
+    let hoursName = timer.querySelector("#hoursName");
+    let daysName = timer.querySelector("#daysName");
 
-    if(seconds < 5 && seconds > 1) {
-      timeUnitName.textContent = "секунды";
-    } else if ( seconds == 1){
-      timeUnitName.textContent = "cекунда";
+    if (seconds < 10) {
+      seconds = "0" + seconds;
     }
-    else {
-      timeUnitName.textContent = "секунд";
+    if (
+      (seconds < 5 && seconds > 1) ||
+      (seconds < 55 && seconds > 51) ||
+      (seconds < 45 && seconds > 41) ||
+      (seconds < 35 && seconds > 31) ||
+      (seconds < 25 && seconds > 21)
+    ) {
+      secondsName.textContent = "секунды";
+    } else if (
+      seconds == 1 ||
+      seconds == 51 ||
+      seconds == 41 ||
+      seconds == 31 ||
+      seconds == 21
+    ) {
+      secondsName.textContent = "cекунда";
+    } else {
+      secondsName.textContent = "секунд";
     }
-    if(minutes < 10) {
-      minutes = '0' + minutes;
-    };
-    if(hours < 10) {
-      hours = '0' + hours;
-    };
-    if(days < 10) {
-      days = '0' + days;
-    };
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (minutes < 5 && minutes > 1) {
+      minutesName.textContent = "минуты";
+    } else if (minutes == 1) {
+      minutesName.textContent = "минута";
+    } else {
+      minutesName.textContent = "минут";
+    }
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (hours < 5 && hours > 1) {
+      hoursName.textContent = "часа";
+    } else if (hours == 1) {
+      hoursName.textContent = "час";
+    } else {
+      hoursName.textContent = "часов";
+    }
+    if (days < 10) {
+      days = "0" + days;
+    }
+    if (days < 5 && days > 1) {
+      daysName.textContent = "дня";
+    } else if (days == 1) {
+      daysName.textContent = "день";
+    } else {
+      daysName.textContent = "дней";
+    }
 
     return {
       total: timeDifferenceMilliSeconds,
