@@ -275,7 +275,12 @@ header ul li:before {
   display: flex;
 }
 .content .timer {
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
   margin-top: 150px;
+  padding-bottom: 20px;
   text-align: center;
 }
 .content .timer-title {
@@ -283,19 +288,44 @@ header ul li:before {
   color: #c78030;
 }
 .content .timer-action {
+  width: 100%;
   font-size: 24px;
   color: #fff;
   margin-top: 40px;
 }
 .content .timer-numbers {
   margin-top: 40px;
-  font-size: 90px;
   color: #c78030;
+  /* display: flex;
+  justify-content: center; */
+  /* column-gap: 30px; */
 }
+
+.timer-numbers__field{
+  display: inline-block;
+  padding: 0 20px;
+
+}
+
+.timer-numbers__field p{
+    font-size: 18px;
+}
+.timer-numbers__field span{
+  font-size: 90px;
+    display: block;
+    width: 100%;
+    min-width: 120px;
+}
+
+
 .content .timer-numbers:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   content: '';
   display: block;
-  width: 20%;
+  width: 70%;
   height: 1px;
   background-color: #c78030;
   margin: 0 auto;

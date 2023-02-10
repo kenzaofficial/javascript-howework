@@ -38,18 +38,42 @@ window.addEventListener("DOMContentLoaded", function () {
 
   //timer
 
-  let deadline = "2023-02-28";
+  let deadline = "2023-02-23";
 
   function getTimeRemaining(endtime) {
     let timeDifferenceMilliSeconds =
       Date.parse(endtime) - Date.parse(new Date());
     let seconds = Math.floor((timeDifferenceMilliSeconds / 1000) % 60);
     let minutes = Math.floor((timeDifferenceMilliSeconds / 60000) % 60);
-    let hours = Math.floor(timeDifferenceMilliSeconds / 60000 / 60);
-    // let days = Math.floor(timeDifferenceMilliSeconds / 60000 / 60 / 24);
+    let hours = Math.floor(timeDifferenceMilliSeconds / 60000 / 60 % 24);
+    let days = Math.floor(timeDifferenceMilliSeconds / 60000 / 60 / 24);
+    let timeUnitName = timer.querySelector('#unitName');
+    console.log(timeUnitName);
+    if(seconds < 10) {
+      seconds = '0' + seconds;
+    };
+
+    if(seconds < 5 && seconds > 1) {
+      timeUnitName.textContent = "секунды";
+    } else if ( seconds == 1){
+      timeUnitName.textContent = "cекунда";
+    }
+    else {
+      timeUnitName.textContent = "секунд";
+    }
+    if(minutes < 10) {
+      minutes = '0' + minutes;
+    };
+    if(hours < 10) {
+      hours = '0' + hours;
+    };
+    if(days < 10) {
+      days = '0' + days;
+    };
 
     return {
       total: timeDifferenceMilliSeconds,
+      days: days,
       hours: hours,
       minutes: minutes,
       seconds: seconds,
@@ -58,6 +82,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   function setClock(id, endtime) {
     let timer = document.getElementById(id);
+    let days = timer.querySelector(".days");
     let hours = timer.querySelector(".hours");
     let minutes = timer.querySelector(".minutes");
     let seconds = timer.querySelector(".seconds");
@@ -65,6 +90,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     function updateClock() {
       let updatingTime = getTimeRemaining(endtime);
+      days.textContent = updatingTime.days;
       hours.textContent = updatingTime.hours;
       minutes.textContent = updatingTime.minutes;
       seconds.textContent = updatingTime.seconds;
