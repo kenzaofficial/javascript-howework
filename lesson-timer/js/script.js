@@ -51,6 +51,21 @@ window.addEventListener("DOMContentLoaded", function () {
     let minutesName = timer.querySelector("#minutesName");
     let hoursName = timer.querySelector("#hoursName");
     let daysName = timer.querySelector("#daysName");
+    // let arraySeconds = [seconds];
+    // console.log(arraySeconds);
+    // if (arraySeconds.includes(9)) {
+    //   seconds = "0" + seconds;
+    // }
+
+    const secondEnding_1Less = [5, 55, 45, 35, 25];
+    const secondEnding_1More = [1, 51, 41, 31, 21];
+    const secondEnding_2 = "";
+    const secondEnding_3 = "";
+
+    let less = secondEnding_1Less.find((sec) => sec === seconds);
+    let more = secondEnding_1More.includes(seconds);
+    console.log("more", more);
+    // console.log(seconds, more);
 
     if (seconds < 10) {
       seconds = "0" + seconds;
@@ -63,13 +78,7 @@ window.addEventListener("DOMContentLoaded", function () {
       (seconds < 25 && seconds > 21)
     ) {
       secondsName.textContent = "секунды";
-    } else if (
-      seconds == 1 ||
-      seconds == 51 ||
-      seconds == 41 ||
-      seconds == 31 ||
-      seconds == 21
-    ) {
+    } else if (more) {
       secondsName.textContent = "cекунда";
     } else {
       secondsName.textContent = "секунд";
