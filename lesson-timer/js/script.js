@@ -51,64 +51,80 @@ window.addEventListener("DOMContentLoaded", function () {
     let minutesName = timer.querySelector("#minutesName");
     let hoursName = timer.querySelector("#hoursName");
     let daysName = timer.querySelector("#daysName");
-    // let arraySeconds = [seconds];
-    // console.log(arraySeconds);
-    // if (arraySeconds.includes(9)) {
-    //   seconds = "0" + seconds;
-    // }
 
-    const secondEnding_1Less = [5, 55, 45, 35, 25];
-    const secondEnding_1More = [1, 51, 41, 31, 21];
-    const secondEnding_2 = "";
-    const secondEnding_3 = "";
+    const secondEndingSingle = [51, 41, 31, 21, 1];
+    const secondEndingPlural = [54, 53, 52, 44, 43, 42, 34, 33, 32, 24, 23, 22, 4, 3, 2];
+    const addingZero = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
-    let less = secondEnding_1Less.find((sec) => sec === seconds);
-    let more = secondEnding_1More.includes(seconds);
-    console.log("more", more);
-    // console.log(seconds, more);
 
-    if (seconds < 10) {
+    let singleSeconds = secondEndingSingle.includes(seconds);
+    let pluralSeconds = secondEndingPlural.includes(seconds);
+    let zeroSeconds = addingZero.includes(seconds);
+
+    let singleMinutes = secondEndingSingle.includes(minutes);
+    let pluralMinutes = secondEndingPlural.includes(minutes);
+    let zeroMinutes = addingZero.includes(minutes);
+
+    let singleHours = secondEndingSingle.includes(hours);
+    let pluralHours = secondEndingPlural.includes(hours);
+    let zeroHours = addingZero.includes(hours);
+
+    let singleDays = secondEndingSingle.includes(days);
+    let pluralDays = secondEndingPlural.includes(days);
+    let zeroDays = addingZero.includes(days);
+
+    // добавляем нолик когда число на таймере меньше 10
+    if (zeroSeconds) {
       seconds = "0" + seconds;
     }
-    if (
-      (seconds < 5 && seconds > 1) ||
-      (seconds < 55 && seconds > 51) ||
-      (seconds < 45 && seconds > 41) ||
-      (seconds < 35 && seconds > 31) ||
-      (seconds < 25 && seconds > 21)
-    ) {
-      secondsName.textContent = "секунды";
-    } else if (more) {
-      secondsName.textContent = "cекунда";
-    } else {
+
+    // меняем окончания оставшихся секунд в зависимости от числа на таймере
+    if (pluralSeconds) {
+      secondsName.textContent = "cекунды";
+    } else if (singleSeconds) {
+      secondsName.textContent = "секунда";
+    }
+    else {
       secondsName.textContent = "секунд";
     }
-    if (minutes < 10) {
+
+    // добавляем нолик когда число на таймере меньше 10
+    if (zeroMinutes) {
       minutes = "0" + minutes;
     }
-    if (minutes < 5 && minutes > 1) {
+
+    // меняем окончания оставшихся минут в зависимости от числа на таймере
+    if (pluralMinutes) {
       minutesName.textContent = "минуты";
-    } else if (minutes == 1) {
+    } else if (singleMinutes) {
       minutesName.textContent = "минута";
     } else {
       minutesName.textContent = "минут";
     }
-    if (hours < 10) {
+
+    // добавляем нолик когда число на таймере меньше 10
+    if (zeroHours) {
       hours = "0" + hours;
     }
-    if (hours < 5 && hours > 1) {
+
+    // меняем окончания оставшихся часов в зависимости от числа на таймере
+    if (pluralHours) {
       hoursName.textContent = "часа";
-    } else if (hours == 1) {
+    } else if (singleHours) {
       hoursName.textContent = "час";
     } else {
       hoursName.textContent = "часов";
     }
-    if (days < 10) {
+
+    // добавляем нолик когда число на таймере меньше 10
+    if (zeroDays) {
       days = "0" + days;
     }
-    if (days < 5 && days > 1) {
+
+    // меняем окончания оставшихся дней в зависимости от числа на таймере
+    if (pluralDays) {
       daysName.textContent = "дня";
-    } else if (days == 1) {
+    } else if (singleDays) {
       daysName.textContent = "день";
     } else {
       daysName.textContent = "дней";
