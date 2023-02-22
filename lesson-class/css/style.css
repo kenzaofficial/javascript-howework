@@ -1,0 +1,10 @@
+body{
+    height: 100vh;
+    background: #181d1d;
+    color: white;
+}
+
+.intro {
+    border-radius: 10px;
+    display: flex;
+}
