@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   //timer
 
-  let deadline = "2023-02-23";
+  let deadline = "2024-02-23";
 
   function getTimeRemaining(endtime) {
     let timeDifferenceMilliSeconds =
@@ -54,14 +54,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
     const addingZero = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
-    // let zeroSeconds = addingZero.includes(seconds);
-
-    // let zeroMinutes = addingZero.includes(minutes);
-
-    // let zeroHours = addingZero.includes(hours);
-
-    // let zeroDays = addingZero.includes(days);
-
     function getSingle(time) {
       const secondEndingSingle = [51, 41, 31, 21, 1];
       return secondEndingSingle.includes(time);
@@ -76,25 +68,18 @@ window.addEventListener("DOMContentLoaded", function () {
       return addingZero.includes(time);
     }
 
-    // добавляем нолик когда число на таймере меньше 10
-    // if (seconds < 10) {
-    //   seconds = "0" + seconds;
-    // }
-
     // меняем окончания оставшихся секунд в зависимости от числа на таймере
     if (getPlural(seconds)) {
       secondsName.textContent = "cекунды";
     } else if (getSingle(seconds)) {
-      console.log(getSingle(seconds));
       secondsName.textContent = "секунда";
     } else {
       secondsName.textContent = "секунд";
     }
 
-    // добавляем нолик когда число на таймере меньше 10
-    // if (zeroMinutes) {
-    //   minutes = "0" + minutes;
-    // }
+    if (getZero(seconds)) {
+      seconds = "0" + seconds;
+    }
 
     // меняем окончания оставшихся минут в зависимости от числа на таймере
     if (getPlural(minutes)) {
@@ -105,10 +90,9 @@ window.addEventListener("DOMContentLoaded", function () {
       minutesName.textContent = "минут";
     }
 
-    // добавляем нолик когда число на таймере меньше 10
-    // if (zeroHours) {
-    //   hours = "0" + hours;
-    // }
+    if (getZero(minutes)) {
+      minutes = "0" + minutes;
+    }
 
     // меняем окончания оставшихся часов в зависимости от числа на таймере
     if (getPlural(hours)) {
@@ -118,11 +102,9 @@ window.addEventListener("DOMContentLoaded", function () {
     } else {
       hoursName.textContent = "часов";
     }
-
-    // добавляем нолик когда число на таймере меньше 10
-    // if (zeroDays) {
-    //   days = "0" + days;
-    // }
+    if (getZero(hours)) {
+      hours = "0" + hours;
+    }
 
     // меняем окончания оставшихся дней в зависимости от числа на таймере
     if (getPlural(days)) {
@@ -131,6 +113,10 @@ window.addEventListener("DOMContentLoaded", function () {
       daysName.textContent = "день";
     } else {
       daysName.textContent = "дней";
+    }
+
+    if (getZero(days)) {
+      days = "0" + days;
     }
 
     return {
